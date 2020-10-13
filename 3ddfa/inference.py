@@ -80,7 +80,7 @@ def main(args):
 
         # face alignment model use RGB as input, result is a tuple with landmarks and boxes
         preds = alignment_model.get_landmarks(img_ori[:, :, ::-1])
-        pts_2d_68 = preds[0][0]
+        pts_2d_68 = preds[0]
         pts_2d_5 = get_5lmk_from_68lmk(pts_2d_68)
         landmark_list.append(pts_2d_5)
         roi_box = parse_roi_box_from_landmark(pts_2d_68.T)

@@ -77,7 +77,8 @@ if __name__ == '__main__':
 
 
     opt = TestOptions().parse()
-
+    # opt.device_count=1
+    
     data_info = data.dataset_info()
     datanum = data_info.get_dataset(opt)[0]
     folderlevel = data_info.folder_level[datanum]
@@ -88,7 +89,7 @@ if __name__ == '__main__':
     iter_counter = IterationCounter(opt, len(dataloaders[0]) * opt.render_thread)
     # create a webpage that summarizes the all results
 
-    testing_queue = Queue(10)
+    testing_queue = Queue(1)
 
     ngpus = opt.device_count
 
@@ -99,7 +100,7 @@ if __name__ == '__main__':
         render_layer = TestRender(opt)
         render_layer_list.append(render_layer)
 
-    opt.gpu_ids = list(range(0, ngpus - opt.render_thread))
+    opt.gpu_ids = [0]#list(range(0, ngpus - opt.render_thread))
     print('Testing gpu ', opt.gpu_ids)
     if opt.names is None:
         model = TestModel(opt)
@@ -212,8 +213,3 @@ if __name__ == '__main__':
         print('finished')
         for fs in f:
             fs.close()
-
-
-
-
-

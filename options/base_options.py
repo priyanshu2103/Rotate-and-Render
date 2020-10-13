@@ -25,8 +25,8 @@ class BaseOptions():
         parser.add_argument('--norm_D', type=str, default='spectralinstance', help='instance normalization or batch normalization')
         parser.add_argument('--norm_E', type=str, default='spectralinstance', help='instance normalization or batch normalization')
         parser.add_argument('--phase', type=str, default='train', help='train, val, test, etc')
-        parser.add_argument('--device_count', type=int, default=8, help='the total number of gpus to use')
-        parser.add_argument('--render_thread', type=int, default=2, help='number of gpus used for rendering')
+        parser.add_argument('--device_count', type=int, default=1, help='the total number of gpus to use')
+        parser.add_argument('--render_thread', type=int, default=1, help='number of gpus used for rendering')
         parser.add_argument('--chunk_size', default=None, type=int, nargs='+', help='specify the batch size on each training gpu. Training gpu # = device_count - render_thread')
         # input/output sizes
         # parser.add_argument('--batchSize', type=int, default=1, help='input batch size')
